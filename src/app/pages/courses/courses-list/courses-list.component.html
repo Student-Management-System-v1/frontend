@@ -1,0 +1,32 @@
+<div class="row mt-2">
+  <div class="col">
+    <h4 class="text-black-50">Courses List</h4>
+  </div>
+</div>
+
+<div class="row rounded mt-2 p-2">
+
+  <div class="col-8 border rounded">
+    <table class="table table-hover">
+      <thead>
+
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Course Name</th>
+        <th scope="col"></th>
+      </tr>
+
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let course of courses;let indexOfElement=index;">
+        <th scope="row">{{indexOfElement + 1}}</th>
+        <td>{{course.name}}</td>
+        <td><button class="btn btn-md" (click)="deleteCourse(course)"><i class="fa fa-trash text-danger"></i></button></td>
+      </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>

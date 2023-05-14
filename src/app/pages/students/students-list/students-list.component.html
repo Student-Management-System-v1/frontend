@@ -1,0 +1,36 @@
+<div class="row mt-2">
+  <div class="col">
+    <h4 class="text-black-50">Students List</h4>
+  </div>
+</div>
+
+<div class="row mt-2 p-2">
+
+  <div class="col-10 border rounded">
+    <table class="table table-hover">
+      <thead>
+
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name & Family name</th>
+        <th scope="col">Date of birth</th>
+        <th scope="col">Email address</th>
+        <th scope="col"></th>
+      </tr>
+
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let student of students;let indexOfElement=index;">
+        <th scope="row">{{indexOfElement + 1}}</th>
+        <td>{{student.firstName}} {{student.familyName}}</td>
+        <td>{{student.dateOfBirth | date:'MM/dd/YYYY'}}</td>
+        <td>{{student.email}}</td>
+        <td><button class="btn btn-md" (click)="deleteStudent(student)"><i class="fa fa-user-times text-danger"></i></button></td>
+      </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="row border rounded mt-2">
+
+  <div class="row">
+    <div class="col">
+      <h4 class="text-black-50 mt-2">
+        <span>New Result Form</span>
+      </h4>
+    </div>
+  </div>
+  <div class="row w-50">
+    <div class="col">
+      <div *ngIf="failed" class="alert alert-danger alert-dismissible fade show p-1 px-2" role="alert">
+        <strong>Oops!</strong>  Something went wrong, try again later
+        <button type="button" class="close btn btn-md" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div *ngIf="invalid" class="alert alert-warning alert-dismissible fade show p-1 px-2" role="alert">
+        <strong>Oops!</strong>  Please make sure you provided a valid Result information
+        <button type="button" (click)="closeAlert()" class="close btn btn-md" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div *ngIf="success" class="alert alert-success alert-dismissible fade show p-1 px-2" role="alert">
+        <strong>New Result is registered successfully!</strong> Check the results list
+        <button type="button" class="btn  btn-md border" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<div class="row border rounded mt-2 p-2">
+  <form [formGroup]="newResultForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group mt-2">
+      <select formControlName="courseId" class="form-select w-50">
+        <option [ngValue]="null" disabled>Select Course</option>
+        <option *ngFor="let course of courses" [ngValue]="course.id">{{course.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-2">
+      <select formControlName="studentId" class="form-select w-50">
+        <option [ngValue]="null" disabled>Select Student</option>
+        <option *ngFor="let student of students" [ngValue]="student.id">{{student.firstName}} {{student.familyName}}</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-2">
+      <select formControlName="score" class="form-select w-50">
+        <option [ngValue]="null" disabled>Select Score</option>
+        <option *ngFor="let score of scores" [ngValue]="score">{{score}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-outline-primary my-4">Submit</button>
+
+  </form>
+</div>
+
