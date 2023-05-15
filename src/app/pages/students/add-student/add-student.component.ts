@@ -35,7 +35,8 @@ export class AddStudentComponent implements OnInit {
     console.log(studentToSave)
     let age = this.calculateAge(date);
     console.log("age: ",age)
-    if (this.form?.valid && age >= 10) {
+
+    if (this.form?.valid && age >= 10 && this.isValidEmail(studentToSave.email)) {
       this.studentService.saveStudent(studentToSave).subscribe(res => {
         console.log("NEW Student created :)");
         console.log(res)
@@ -51,6 +52,12 @@ export class AddStudentComponent implements OnInit {
       this.invalid = true;
     }
   }
+
+  isValidEmail(email:string): boolean{
+    let regex = /[a-z]+\.[a-z]+@[a-z]+\.[a-z]/
+    return regex.test(email);
+  }
+
   calculateAge(birthdate: Date): number {
     const today = new Date();
     const years = today.getFullYear() - birthdate.getFullYear();

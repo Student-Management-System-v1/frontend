@@ -10,7 +10,7 @@ import {AddResultComponent} from "./pages/results/add-result/add-result.componen
 
 
 const routes: Routes = [
-  {path : '', redirectTo: '/home', pathMatch:'full'},
+  {path : '', redirectTo: 'home', pathMatch:'full'},
   {path: 'home', component: HomeComponent},
   {path: 'students', component: StudentsListComponent},
   {path: 'add-new-student', component: AddStudentComponent},
